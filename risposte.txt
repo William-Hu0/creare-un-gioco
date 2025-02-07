@@ -1,0 +1,7 @@
+1.viene creata nel var myGameArea con document.createElement("canvas")
+2a.fa si che quando la pagina si carichi la funzione startGame() venga fatta partire
+2b.è l'oggetto che contiene il canvas come valore e che tramite la funzione start lo inserisce e gli da sppecifiche dimensioni
+3.lo usiamo per accedere ai valori al suo interno in questo caso creaiamo il canvas e poi lo inseriamo prima delle scritte con le dimensioni scelte tramite la funzione start scrivendo myGameArea.start()
+4.serve a definire le dimensioni del canvas usiamo poi this.context = this.canvas.getContext("2d"); per poterci disegnare
+5.tramite canvas : document.createElement("canvas"), all'interno dell'oggetto il canvas viene creato, e infine document.body.insertBefore(this.canvas, document.body.childNodes[0]); per farsi che compaia prima di tutti gli altri elementi
+6.è largo ed alto 20 pixel, ed è posizionato alle coordinate  x: 10, y: 120,
