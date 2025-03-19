@@ -4,4 +4,16 @@ canvas {
 }
 body {
     background-color: orange;
+    text-align: center;
+}
+button {
+    border-radius: 12px;
+    height:50px;
+    width:100px;
+    background-color: #ffffff;
+    border-color: #94a7ae;
+    font-size: larger;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #882c2c;
+    margin-top: 5px;
 }
