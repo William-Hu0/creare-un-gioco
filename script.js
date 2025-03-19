@@ -38,3 +38,6 @@ var redSquare = {
   function moveright() {
     redSquare.x += 30;
   }
+  function updateGameArea() {
+    myGameArea.draw(redSquare);
+  }
