@@ -6,9 +6,10 @@
     <script src="script.js"></script>
 </head>
 <body onload="startGame()">
-    <p>We have created a game area! (or at least an empty canvas)</p>
-    <button onclick="moveup()">up</button><br>
-    <button onclick="moveleft()">left</button><button onclick="moveright()">right</button><br>
-    <button onclick="movedown()">down</button>
+    <p></p>
+    <button onmousedown="moveup()" onmouseup="clearmove()">UP</button><br><br>
+    <button onmousedown="moveleft()" onmouseup="clearmove()">LEFT</button>
+    <button onmousedown="moveright()" onmouseup="clearmove()">RIGHT</button><br><br>
+    <button onmousedown="movedown()" onmouseup="clearmove()">DOWN</button>
 </body>
 </html>

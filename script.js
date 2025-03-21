@@ -6,8 +6,8 @@ function startGame() {
 var myGameArea = {
   canvas : document.createElement("canvas"),
   start : function() {
-      this.canvas.width = 480;
-      this.canvas.height = 270;
+      this.canvas.width = 700;
+      this.canvas.height = 500;
       this.context = this.canvas.getContext("2d");
       document.body.insertBefore(this.canvas, document.body.childNodes[0]); 
       this.interval = setInterval(updateGameArea, 20);
@@ -24,23 +24,34 @@ var redSquare = {
   height: 20,
   x: 10,
   y: 120,
-  color: "red"
+  color: "red",
+  speedX:0,
+  speedY:0,
+  updatePosition: function() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+  }
 };
 function moveup() {
-  redSquare.y -= 30;
+  redSquare.speedY -= 1;
 }
 
 function movedown() {
-  redSquare.y += 30;
+  redSquare.speedY += 1;
 }
 
 function moveleft() {
-  redSquare.x -= 30;
+  redSquare.speedX -= 1;
 }
 
 function moveright() {
-  redSquare.x += 30;
+  redSquare.speedX += 1;
 }
 function updateGameArea() {
+  redSquare.updatePosition();
   myGameArea.draw(redSquare);
+}
+function clearmove() {
+  redSquare.speedX = 0; 
+  redSquare.speedY = 0; 
 }
