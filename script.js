@@ -1,6 +1,7 @@
 function startGame() {
   myGameArea.start();
   myGameArea.draw(redSquare);
+  animatedObject.loadImages();
 }
 
 var myGameArea = {
@@ -17,6 +18,14 @@ var myGameArea = {
       this.context.fillStyle = component.color;
       this.context.fillRect(component.x, component.y, component.width, component.height);
         },
+        drawGameObject: function(gameObject) {
+          this.context.drawImage(
+            gameObject.image,
+            gameObject.x,
+            gameObject.y,
+            gameObject.width,
+            gameObject.height
+          );}
 };
 
 var redSquare = {
@@ -50,8 +59,43 @@ function moveright() {
 function updateGameArea() {
   redSquare.updatePosition();
   myGameArea.draw(redSquare);
+  myGameArea.drawGameObject(animatedObject);
+  animatedObject.update();
 }
 function clearmove() {
   redSquare.speedX = 0; 
   redSquare.speedY = 0; 
 }
+var animatedObject = {
+  speedX: 0,
+  speedY: 0,
+  width: 60,
+  height: 60,
+  x: 10,
+  y: 120,
+  imageList: [], //Vettore che conterrà tutte le immagini caricate
+  contaFrame: 0, //Tiene conto di quanti frame sono passati
+  actualFrame: 0, //Specifica quale frame disegnare
+
+  update: function() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.contaFrame++;
+    if (this.contaFrame == 50) {
+      this.contaFrame = 0;
+      this.actualFrame = (1 + this.actualFrame) % this.imageList.length;
+      //console.log(this.actualFrame);
+      this.image = this.imageList[this.actualFrame];
+    }
+  },
+
+  loadImages: function() {
+     for (imgPath of running) {
+      var img = new Image(this.width, this.height);
+      img.src = imgPath;
+      this.imageList.push(img);
+      //console.log(img);
+    }
+    this.image = this.imageList[this.actualFrame];
+  }
+};
