@@ -68,19 +68,47 @@ var animatedObject = {
     var myright = this.tryX + this.width;
     var mytop = this.tryY;
     var mybottom = this.tryY + this.height;
-    var otherleft = otherobj.x;
-    var otherright = otherobj.x + otherobj.width;
-    var othertop = otherobj.y;
-    var otherbottom = otherobj.y + otherobj.height;
-    var crash = true;
+    var endleft = 0;
+    var endright = 480;
+    var endup = 0;
+    var endown = 270;
+    var crash = false; 
 
-    //NON HO COLLISIONI SE: Un oggetto è sopra oppure sotto oppure a destra oppure a sinistra dell’altro
-    if((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
-      this.x = this.tryX; //Se non ho collisioni sposto realmente l’oggetto
-      this.y = this.tryY;
+    var collisionWithOther = false;
+    if (otherobj) {
+        var otherleft = otherobj.x;
+        var otherright = otherobj.x + otherobj.width;
+        var othertop = otherobj.y;
+        var otherbottom = otherobj.y + otherobj.height;
+
+        if (!((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright))) {
+            collisionWithOther = true;
+            crash = true;
+        }
     }
-    else //HO COLLISIONI MA PER ORA NON FACCIO NIENTE
-    {
+
+    var collisionWithCanvas = false;
+    if (myleft < endleft) {
+        collisionWithCanvas = true;
+        crash = true;
     }
-  },
-};
+    if (myright > endright) {
+        collisionWithCanvas = true;
+        crash = true; 
+    }
+    if (mytop < endup) {
+        collisionWithCanvas = true;
+        crash = true; 
+    }
+    if (mybottom > endown) {
+        collisionWithCanvas = true;
+        crash = true; 
+    }
+    if (!crash) {
+        this.x = this.tryX;
+        this.y = this.tryY;
+    }
+
+    return crash;
+},
+    }
