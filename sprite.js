@@ -69,9 +69,9 @@ var animatedObject = {
     var mytop = this.tryY;
     var mybottom = this.tryY + this.height;
     var endleft = 0;
-    var endright = 480;
+    var endright = 1000;
     var endup = 0;
-    var endown = 270;
+    var endown = 700;
     var crash = false; 
 
     var collisionWithOther = false;
