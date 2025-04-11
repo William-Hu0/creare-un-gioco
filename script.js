@@ -87,3 +87,39 @@ var bushObject = {
     this.image = this.imageList[this.actualFrame];
   }
 };
+document.addEventListener('keydown', (event) => {
+  if(event.key === 'w') {
+    moveup()
+  }
+  if(event.key === 'a') {
+    moveleft()
+  }
+  if(event.key === 's') {
+    movedown()
+  }
+  if(event.key === 'd') {
+    moveright()
+  }
+
+})
+function animatedObject(width, height, color, x, y, type) {
+  this.type = type;
+  this.width = width;
+  this.height = height;
+  this.x = x;
+  this.y = y;    
+  this.speedX = 0;
+  this.speedY = 0;    
+  this.gravity = 0.05;
+  this.gravitySpeed = 0;
+  this.update = function() {
+      ctx = myGameArea.context;
+      ctx.fillStyle = color;
+      ctx.fillRect(this.x, this.y, this.width, this.height);
+  }
+  this.newPos = function() {
+      this.gravitySpeed += this.gravity;
+      this.x += this.speedX;
+      this.y += this.speedY + this.gravitySpeed;        
+  }
+}
